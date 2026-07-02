@@ -10,16 +10,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy: #0d2340;
-    --navy-mid: #163657;
-    --gold: #c9a84c;
-    --gold-light: #e2c97e;
-    --cream: #f9f6f0;
+    --navy: #0e6e6e;
+    --navy-mid: #14918f;
+    --gold: #2dd4c8;
+    --gold-light: #7eebe2;
+    --cream: #f4fbfa;
     --white: #ffffff;
-    --text: #1a1a2e;
-    --text-mid: #4a5568;
-    --text-light: #8a96a8;
-    --border: rgba(201,168,76,0.25);
+    --text: #1a2e2e;
+    --text-mid: #4a6361;
+    --text-light: #8aa6a3;
+    --border: rgba(45,212,200,0.25);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,9 +46,9 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 5%;
     height: 72px;
-    background: rgba(13,35,64,0.97);
+    background: rgba(14,110,110,0.97);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(45,212,200,0.2);
   }
 
   .nav-logo {
@@ -58,6 +58,13 @@
     color: var(--white);
     letter-spacing: 0.03em;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
   }
   .nav-logo span { color: var(--gold); }
 
@@ -93,17 +100,63 @@
   .hero {
     min-height: 100vh;
     display: flex; align-items: center;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4a6e 100%);
+    background: linear-gradient(180deg, #0a4a52 0%, #0e6e6e 35%, #14918f 60%, #1aa8a3 100%);
     position: relative;
     overflow: hidden;
     padding: 100px 5% 60px;
   }
 
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  /* Florida sunset glow */
+  .hero-sun {
+    position: absolute;
+    top: 8%; left: 50%;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,214,153,0.22) 0%, rgba(255,180,120,0.10) 40%, transparent 70%);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: sunPulse 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
   }
+  @keyframes sunPulse {
+    0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+  }
+
+  /* Animated wave layers */
+  .hero-waves {
+    position: absolute; bottom: 0; left: 0; width: 100%; height: 16%;
+    overflow: hidden; pointer-events: none;
+    z-index: 0;
+  }
+  .hero-waves svg {
+    position: absolute; bottom: 0; left: 0;
+    width: 200%; height: 100%;
+  }
+  .wave1 { animation: waveDrift 22s linear infinite; opacity: 0.35; }
+  .wave2 { animation: waveDrift 16s linear infinite reverse; opacity: 0.22; bottom: -6px; }
+  .wave3 { animation: waveDrift 28s linear infinite; opacity: 0.15; bottom: 6px; }
+  @keyframes waveDrift {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Readability scrim over background effects */
+  .hero-scrim {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(10,40,45,0.35) 0%, rgba(10,40,45,0.15) 35%, rgba(10,40,45,0.45) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Palm silhouettes */
+  .hero-palms {
+    position: absolute; bottom: 0; pointer-events: none;
+    opacity: 0.10;
+    z-index: 0;
+  }
+  .palm-left { left: -2%; bottom: 5%; width: 220px; transform: scaleX(-1); }
+  .palm-right { right: -1%; bottom: 8%; width: 180px; }
 
   .hero-inner {
     position: relative; z-index: 2;
@@ -113,8 +166,8 @@
 
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(201,168,76,0.15);
-    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(45,212,200,0.15);
+    border: 1px solid rgba(45,212,200,0.3);
     color: var(--gold-light);
     font-size: 0.75rem;
     letter-spacing: 0.12em;
@@ -202,8 +255,8 @@
 
   /* Hero card */
   .hero-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(45,212,200,0.3);
     border-radius: 4px;
     padding: 2.5rem;
     backdrop-filter: blur(10px);
@@ -223,7 +276,7 @@
   }
 
   .guarantee-box {
-    background: rgba(201,168,76,0.12);
+    background: rgba(45,212,200,0.12);
     border-left: 3px solid var(--gold);
     padding: 1rem 1.25rem;
     margin-bottom: 1.75rem;
@@ -271,7 +324,7 @@
   .trust-bar {
     background: var(--navy);
     padding: 1.25rem 5%;
-    border-bottom: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(45,212,200,0.15);
   }
   .trust-inner {
     max-width: 1200px; margin: 0 auto;
@@ -286,7 +339,57 @@
   }
   .trust-item .icon { color: var(--gold); font-size: 1rem; }
 
-  /* ── SECTIONS ── */
+  /* ── CARRIER RIBBON ── */
+  .carrier-ribbon {
+    background: var(--white);
+    padding: 1.75rem 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(14,110,110,0.08);
+    position: relative;
+  }
+  .carrier-ribbon::before,
+  .carrier-ribbon::after {
+    content: '';
+    position: absolute; top: 0; bottom: 0;
+    width: 80px; z-index: 2;
+    pointer-events: none;
+  }
+  .carrier-ribbon::before { left: 0; background: linear-gradient(90deg, var(--white), transparent); }
+  .carrier-ribbon::after { right: 0; background: linear-gradient(-90deg, var(--white), transparent); }
+
+  .carrier-track {
+    display: flex;
+    gap: 3.5rem;
+    white-space: nowrap;
+    animation: scrollRibbon 40s linear infinite;
+    width: max-content;
+  }
+  .carrier-ribbon:hover .carrier-track { animation-play-state: paused; }
+
+  .carrier-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: color 0.2s;
+  }
+  .carrier-name::before {
+    content: '✦';
+    font-size: 0.7rem;
+    color: var(--gold);
+  }
+  .carrier-name:hover { color: var(--navy); }
+
+  @keyframes scrollRibbon {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+
   section { padding: 90px 5%; }
 
   .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -325,28 +428,78 @@
   .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.5px;
-    background: rgba(13,35,64,0.08);
-    border: 1px solid rgba(13,35,64,0.08);
+    gap: 1.25rem;
+  }
+  .service-card-front, .service-card-back {
+    border: 1px solid rgba(14,110,110,0.08);
+    border-radius: 4px;
   }
 
   .service-card {
-    background: var(--white);
-    padding: 2rem 1.75rem;
-    transition: background 0.25s;
-    cursor: default;
+    background: transparent;
+    padding: 0;
+    perspective: 1200px;
+    cursor: pointer;
+  }
+  .service-card-inner {
     position: relative;
-    overflow: hidden;
+    width: 100%;
+    min-height: 280px;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
   }
-  .service-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0;
-    width: 0; height: 2px;
-    background: var(--gold);
-    transition: width 0.3s;
+  .service-card.flipped .service-card-inner,
+  .service-card:focus .service-card-inner {
+    transform: rotateY(180deg);
   }
-  .service-card:hover { background: #f7f4ee; }
-  .service-card:hover::after { width: 100%; }
+  .service-card-front, .service-card-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    padding: 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card-front {
+    background: var(--white);
+  }
+  .service-card-back {
+    background: var(--navy);
+    color: white;
+    transform: rotateY(180deg);
+    justify-content: center;
+  }
+  .service-card-back h3 {
+    color: var(--gold-light);
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .service-card-back ul {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .service-card-back li {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.85);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .service-card-back li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .flip-hint {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .service-card-back .flip-hint { color: var(--gold-light); }
 
   .service-icon {
     font-size: 1.5rem;
@@ -382,7 +535,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 4rem;
     font-weight: 300;
-    color: rgba(201,168,76,0.2);
+    color: rgba(45,212,200,0.2);
     line-height: 1;
     margin-bottom: 0.5rem;
   }
@@ -407,7 +560,7 @@
     content: '✦';
     position: absolute;
     font-size: 20rem;
-    color: rgba(201,168,76,0.04);
+    color: rgba(45,212,200,0.04);
     top: -4rem; right: -4rem;
     font-family: serif;
     line-height: 1;
@@ -427,7 +580,7 @@
     line-height: 1.5;
     margin-bottom: 2.5rem;
     padding: 2rem;
-    border: 1px solid rgba(201,168,76,0.25);
+    border: 1px solid rgba(45,212,200,0.25);
     border-radius: 2px;
   }
 
@@ -440,17 +593,13 @@
   .about-img-wrap {
     position: relative;
   }
-  .about-img-placeholder {
+  .about-img {
     width: 100%;
     aspect-ratio: 3/4;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-    border-radius: 2px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.4);
-    font-style: italic;
-    letter-spacing: 0.05em;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 0 20px 50px -15px rgba(14,110,110,0.35);
   }
   .about-img-accent {
     position: absolute;
@@ -515,7 +664,7 @@
     display: flex; align-items: flex-start; gap: 1rem;
     margin-bottom: 1.25rem;
     padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(13,35,64,0.08);
+    border-bottom: 1px solid rgba(14,110,110,0.08);
   }
   .contact-detail:last-child { border-bottom: none; }
   .contact-icon { color: var(--gold); font-size: 1.1rem; margin-top: 2px; }
@@ -527,7 +676,7 @@
     background: var(--white);
     padding: 2.5rem;
     border-radius: 2px;
-    border: 1px solid rgba(13,35,64,0.08);
+    border: 1px solid rgba(14,110,110,0.08);
   }
   .contact-form h3 {
     font-size: 1.4rem;
@@ -545,7 +694,7 @@
   .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.75rem; }
   .form-group label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-mid); }
   .form-group input, .form-group select, .form-group textarea {
-    border: 1px solid rgba(13,35,64,0.15);
+    border: 1px solid rgba(14,110,110,0.15);
     border-radius: 2px;
     padding: 0.7rem 1rem;
     font-family: 'DM Sans', sans-serif;
@@ -562,7 +711,7 @@
   footer {
     background: var(--navy);
     padding: 3rem 5% 2rem;
-    border-top: 1px solid rgba(201,168,76,0.15);
+    border-top: 1px solid rgba(45,212,200,0.15);
   }
   .footer-inner {
     max-width: 1200px; margin: 0 auto;
@@ -576,6 +725,11 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
     color: white;
+  }
+  .footer-logo-img {
+    height: 50px;
+    width: auto;
+    display: block;
   }
   .footer-logo span { color: var(--gold); }
 
@@ -623,13 +777,103 @@
     .trust-inner { justify-content: center; }
     .services-header { flex-direction: column; align-items: flex-start; }
   }
+  /* ── FAQ ── */
+  .faq-bg { background: var(--white); }
+  .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+  .faq-item { border-bottom: 1px solid rgba(14,110,110,0.12); }
+  .faq-question {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 0; gap: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--navy); text-align: left;
+    transition: color 0.2s;
+  }
+  .faq-question:hover { color: var(--navy-mid); }
+  .faq-icon {
+    font-size: 1.5rem; font-weight: 300; color: var(--gold);
+    flex-shrink: 0; transition: transform 0.3s; line-height: 1;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.25rem; }
+  .faq-answer p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; }
+
+  /* ── SAVINGS CALCULATOR ── */
+  .calc-bg { background: var(--cream); }
+  .calc-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .calc-slider-wrap { margin: 2.5rem 0 1rem; }
+  .calc-slider {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; border-radius: 3px;
+    background: linear-gradient(90deg, var(--navy-mid) 0%, var(--gold) 100%);
+    outline: none; cursor: pointer;
+  }
+  .calc-slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--navy); border: 3px solid var(--gold);
+    cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .calc-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-light); margin-top: 0.5rem; }
+  .calc-current {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 600; color: var(--navy);
+    line-height: 1; margin: 1rem 0 0.25rem;
+  }
+  .calc-current-label { font-size: 0.8rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2rem; }
+  .calc-result {
+    background: var(--navy); color: white; border-radius: 4px;
+    padding: 2rem; margin-top: 1.5rem;
+    display: flex; justify-content: space-around; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .calc-result-item { text-align: center; }
+  .calc-result-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .calc-result-label { font-size: 0.72rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; }
+  .calc-disclaimer { font-size: 0.72rem; color: var(--text-light); margin-top: 1rem; font-style: italic; }
+
+  /* ── HOW IT WORKS TIMELINE ── */
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2rem; margin-top: 3.5rem; }
+  .step-card { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .step-card.visible { opacity: 1; transform: translateY(0); }
+  .step-card:nth-child(1) { transition-delay: 0s; }
+  .step-card:nth-child(2) { transition-delay: 0.15s; }
+  .step-card:nth-child(3) { transition-delay: 0.3s; }
+  .step-card:nth-child(4) { transition-delay: 0.45s; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(45,212,200,0.25); line-height: 1; margin-bottom: 0.5rem; }
+  .step-card.visible .step-num { color: rgba(45,212,200,0.45); transition: color 0.6s ease 0.3s; }
+  .step-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .step-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; }
+
+  /* ── CONFETTI ── */
+  .confetti-piece {
+    position: fixed; top: -10px;
+    width: 10px; height: 10px; border-radius: 2px;
+    animation: confettiFall linear forwards;
+    pointer-events: none; z-index: 9999;
+  }
+  @keyframes confettiFall {
+    to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+  }
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Your Healthcare <span>Solutions</span></a>
+  <a href="#" class="nav-logo"><img src="logo-nav.png" alt="Your Healthcare Solutions" class="nav-logo-img" /></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#how">How It Works</a></li>
@@ -643,6 +887,46 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
+  <div class="hero-sun"></div>
+  <div class="hero-scrim"></div>
+
+  <svg class="hero-palms palm-left" viewBox="0 0 220 320" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <!-- trunk -->
+    <path d="M108 320 C 106 230, 100 170, 90 110 C 100 115, 108 120, 112 125 C 108 90, 102 50, 95 10 C 110 40, 122 80, 126 125 C 130 118, 138 110, 148 105 C 138 165, 130 240, 128 320 Z" />
+    <!-- fronds -->
+    <g stroke="white" stroke-width="9" stroke-linecap="round" fill="none">
+      <path d="M112 95 C 70 70, 30 65, 5 80"/>
+      <path d="M112 95 C 75 50, 40 25, 15 15"/>
+      <path d="M115 90 C 95 45, 75 15, 65 0"/>
+      <path d="M120 92 C 130 45, 145 15, 160 0"/>
+      <path d="M122 95 C 155 55, 185 35, 210 25"/>
+      <path d="M124 100 C 165 80, 200 80, 220 95"/>
+    </g>
+  </svg>
+
+  <svg class="hero-palms palm-right" viewBox="0 0 220 320" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M108 320 C 106 230, 100 170, 90 110 C 100 115, 108 120, 112 125 C 108 90, 102 50, 95 10 C 110 40, 122 80, 126 125 C 130 118, 138 110, 148 105 C 138 165, 130 240, 128 320 Z" />
+    <g stroke="white" stroke-width="9" stroke-linecap="round" fill="none">
+      <path d="M112 95 C 70 70, 30 65, 5 80"/>
+      <path d="M112 95 C 75 50, 40 25, 15 15"/>
+      <path d="M115 90 C 95 45, 75 15, 65 0"/>
+      <path d="M120 92 C 130 45, 145 15, 160 0"/>
+      <path d="M122 95 C 155 55, 185 35, 210 25"/>
+      <path d="M124 100 C 165 80, 200 80, 220 95"/>
+    </g>
+  </svg>
+
+  <div class="hero-waves">
+    <svg class="wave3" viewBox="0 0 2880 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,100 C 240,180 480,20 720,100 C 960,180 1200,20 1440,100 C 1680,180 1920,20 2160,100 C 2400,180 2640,20 2880,100 L2880,200 L0,200 Z" fill="#ffffff"/>
+    </svg>
+    <svg class="wave2" viewBox="0 0 2880 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,120 C 240,40 480,160 720,100 C 960,40 1200,160 1440,100 C 1680,40 1920,160 2160,100 C 2400,40 2640,160 2880,100 L2880,200 L0,200 Z" fill="#ffffff"/>
+    </svg>
+    <svg class="wave1" viewBox="0 0 2880 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,140 C 240,80 480,180 720,120 C 960,60 1200,160 1440,110 C 1680,60 1920,170 2160,120 C 2400,70 2640,160 2880,110 L2880,200 L0,200 Z" fill="#ffffff"/>
+    </svg>
+  </div>
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">Sarasota's Concierge Health Insurance Expert</div>
@@ -656,19 +940,19 @@
       </div>
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-num">200+</div>
+          <div class="stat-num" data-count="200" data-suffix="+">0</div>
           <div class="stat-label">Carriers</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">50</div>
+          <div class="stat-num" data-count="50">0</div>
           <div class="stat-label">States Licensed</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">100%</div>
+          <div class="stat-num" data-count="100" data-suffix="%">0</div>
           <div class="stat-label">No-Pressure</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num">Free</div>
+          <div class="stat-num" data-static="Free">Free</div>
           <div class="stat-label">Consultation</div>
         </div>
       </div>
@@ -724,6 +1008,34 @@
   </div>
 </div>
 
+<!-- CARRIER RIBBON -->
+<div class="carrier-ribbon">
+  <div class="carrier-track">
+    <span class="carrier-name">Blue Cross Blue Shield</span>
+    <span class="carrier-name">Cigna</span>
+    <span class="carrier-name">Humana</span>
+    <span class="carrier-name">UnitedHealthcare</span>
+    <span class="carrier-name">Aetna</span>
+    <span class="carrier-name">Allstate</span>
+    <span class="carrier-name">Mutual of Omaha</span>
+    <span class="carrier-name">National General</span>
+    <span class="carrier-name">Ambetter</span>
+    <span class="carrier-name">Oscar Health</span>
+    <span class="carrier-name">+ 190 More Carriers</span>
+    <span class="carrier-name">Blue Cross Blue Shield</span>
+    <span class="carrier-name">Cigna</span>
+    <span class="carrier-name">Humana</span>
+    <span class="carrier-name">UnitedHealthcare</span>
+    <span class="carrier-name">Aetna</span>
+    <span class="carrier-name">Allstate</span>
+    <span class="carrier-name">Mutual of Omaha</span>
+    <span class="carrier-name">National General</span>
+    <span class="carrier-name">Ambetter</span>
+    <span class="carrier-name">Oscar Health</span>
+    <span class="carrier-name">+ 190 More Carriers</span>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section class="services-bg" id="services">
   <div class="section-inner">
@@ -735,45 +1047,165 @@
       <a href="#contact" class="btn-primary">Get a Free Quote</a>
     </div>
     <div class="services-grid">
-      <div class="service-card">
-        <span class="service-icon">🏥</span>
-        <h3>Individual Health Insurance</h3>
-        <p>Tailored coverage for individuals and families — major medical, ACA marketplace plans, and short-term options that fit your specific health needs and budget.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">🏥</span>
+            <h3>Individual Health Insurance</h3>
+            <p>Tailored coverage for individuals and families — major medical, ACA marketplace plans, and short-term options that fit your specific health needs and budget.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>ACA marketplace & off-exchange plans</li>
+              <li>Subsidy eligibility check</li>
+              <li>In-network doctor verification</li>
+              <li>Prescription formulary review</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">👨‍👩‍👧</span>
-        <h3>Family Coverage</h3>
-        <p>Protect everyone under one plan. We find family policies that keep your preferred doctors in network and cover your prescriptions — at the best available rate.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">👨‍👩‍👧</span>
+            <h3>Family Coverage</h3>
+            <p>Protect everyone under one plan. We find family policies that keep your preferred doctors in network and cover your prescriptions — at the best available rate.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Pediatric & maternity coverage</li>
+              <li>Family deductible optimization</li>
+              <li>Multi-carrier comparison</li>
+              <li>Dependent enrollment support</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">🏢</span>
-        <h3>Group & Business Plans</h3>
-        <p>Custom employee benefits packages for businesses of any size — from solo entrepreneurs to growing teams. We handle all the legwork so you can focus on your business.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">🏢</span>
+            <h3>Group & Business Plans</h3>
+            <p>Custom employee benefits packages for businesses of any size — from solo entrepreneurs to growing teams. We handle all the legwork so you can focus on your business.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Group medical, dental & vision</li>
+              <li>Employee enrollment management</li>
+              <li>Compliance & renewal support</li>
+              <li>Plans for teams of any size</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">⚕️</span>
-        <h3>Medicare & Medicare Advantage</h3>
-        <p>Turning 65 or helping a loved one navigate Medicare? We simplify the process, compare all available plans in your area, and find the right fit for your healthcare needs.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">⚕️</span>
+            <h3>Medicare & Medicare Advantage</h3>
+            <p>Turning 65 or helping a loved one navigate Medicare? We simplify the process, compare all available plans in your area, and find the right fit for your healthcare needs.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Medicare Advantage & Supplements</li>
+              <li>Part D prescription drug plans</li>
+              <li>Annual Enrollment Period reviews</li>
+              <li>One-on-one guidance, no pressure</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">💊</span>
-        <h3>Prescription Plans</h3>
-        <p>Ensure your critical medications are covered. We verify formularies across carriers and find plans that cover your specific prescriptions at the lowest possible cost.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">💊</span>
+            <h3>Prescription Plans</h3>
+            <p>Ensure your critical medications are covered. We verify formularies across carriers and find plans that cover your specific prescriptions at the lowest possible cost.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Formulary cross-checking</li>
+              <li>Pharmacy network verification</li>
+              <li>Cost-tier comparisons</li>
+              <li>Mail-order options reviewed</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">🦷</span>
-        <h3>Dental & Vision</h3>
-        <p>Standalone dental and vision plans to complement your health coverage — or bundle them for maximum savings and simplified administration.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">🦷</span>
+            <h3>Dental & Vision</h3>
+            <p>Standalone dental and vision plans to complement your health coverage — or bundle them for maximum savings and simplified administration.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Preventive, basic & major dental</li>
+              <li>Vision exams, glasses & contacts</li>
+              <li>Standalone or bundled plans</li>
+              <li>Affordable monthly premiums</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">🛡️</span>
-        <h3>Supplemental Insurance</h3>
-        <p>Critical illness, accident, and gap coverage to protect against unexpected out-of-pocket costs that major medical alone may not cover.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">🛡️</span>
+            <h3>Supplemental Insurance</h3>
+            <p>Critical illness, accident, and gap coverage to protect against unexpected out-of-pocket costs that major medical alone may not cover.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Critical illness coverage</li>
+              <li>Accident & injury protection</li>
+              <li>Hospital indemnity plans</li>
+              <li>Fills gaps in major medical</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
-      <div class="service-card">
-        <span class="service-icon">🌿</span>
-        <h3>Life Insurance</h3>
-        <p>Term, whole, and universal life insurance options to protect your family's financial future — matched to your goals, timeline, and budget.</p>
+      <div class="service-card" tabindex="0">
+        <div class="service-card-inner">
+          <div class="service-card-front">
+            <span class="service-icon">🌿</span>
+            <h3>Life Insurance</h3>
+            <p>Term, whole, and universal life insurance options to protect your family's financial future — matched to your goals, timeline, and budget.</p>
+            <span class="flip-hint">Tap to see what's included →</span>
+          </div>
+          <div class="service-card-back">
+            <h3>What's Included</h3>
+            <ul>
+              <li>Term life (10-30 year options)</li>
+              <li>Whole & universal life</li>
+              <li>No-exam options available</li>
+              <li>Coverage for any budget</li>
+            </ul>
+            <span class="flip-hint">← Back</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -826,12 +1258,49 @@
   </div>
 </section>
 
+<!-- SAVINGS CALCULATOR -->
+<section class="calc-bg">
+  <div class="section-inner">
+    <div class="calc-inner">
+      <div class="section-label">See Your Savings Potential</div>
+      <h2 class="section-title">What Are You <em>Paying Now?</em></h2>
+      <p class="section-desc" style="margin: 0 auto 0.5rem;">Drag the slider to your current monthly premium. We'll show you what the average client saves after working with Shannon.</p>
+
+      <div class="calc-slider-wrap">
+        <input type="range" class="calc-slider" id="premiumSlider" min="100" max="2000" value="600" step="25" />
+        <div class="calc-labels"><span>$100/mo</span><span>$2,000/mo</span></div>
+      </div>
+
+      <div class="calc-current" id="currentPremium">$600</div>
+      <div class="calc-current-label">Your current monthly premium</div>
+
+      <div class="calc-result">
+        <div class="calc-result-item">
+          <span class="calc-result-num" id="savingsLow">$72</span>
+          <div class="calc-result-label">Min. Monthly Savings</div>
+        </div>
+        <div class="calc-result-item">
+          <span class="calc-result-num" id="savingsHigh">$180</span>
+          <div class="calc-result-label">Max. Monthly Savings</div>
+        </div>
+        <div class="calc-result-item">
+          <span class="calc-result-num" id="savingsYear">$1,512</span>
+          <div class="calc-result-label">Est. Annual Savings</div>
+        </div>
+      </div>
+      <p class="calc-disclaimer">Estimates based on average client savings of 12–30%. Actual savings vary by plan, carrier, and individual situation. Schedule a free consultation for your exact quote.</p>
+      <br/>
+      <a href="#contact" class="btn-primary">Get My Exact Quote — Free</a>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-img-wrap">
-        <div class="about-img-placeholder">Shannon McElhaney<br/>Your Healthcare Solutions</div>
+        <img src="shannon-headshot.jpg" alt="Shannon McElhaney, Your Healthcare Solutions" class="about-img" />
         <div class="about-img-accent"></div>
       </div>
       <div class="about-text">
@@ -871,7 +1340,72 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- FAQ -->
+<section class="faq-bg">
+  <div class="section-inner">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-title">Questions? <em>We've Got Answers</em></h2>
+    <p class="section-desc" style="margin-bottom: 2.5rem;">Click any question below to learn more. Don't see your question? Just ask — Shannon responds personally.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Does it cost anything to work with Your Healthcare Solutions?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>No — our services are completely free to you. We're paid directly by the insurance carriers, so there's never a fee for our consultations, research, or ongoing support. You get expert guidance at no extra cost.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Will I be able to keep my current doctors?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We make this a top priority. Before recommending any plan, we verify that your preferred doctors, specialists, and hospitals are in-network. If keeping a specific provider is important to you, tell us upfront and we'll filter our search accordingly.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What information should I bring to my consultation?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Helpful items include: your current insurance card (if any), a list of your doctors and prescriptions, and your approximate gross annual income (Line 11 on your 1040 tax return). If married, this applies to your joint household income as well. Don't worry if you don't have everything — we can work with what you have.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How does the "premium guarantee" actually work?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Because we represent over 200 carriers, we have no incentive to push one company over another — only to find your best value. If we can't find you a better plan at a better premium than what you currently have, we'll pay your first month's premium ourselves.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>I'm turning 65 soon — when should I start looking at Medicare?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>We recommend starting the conversation about 2-3 months before your 65th birthday. This gives us time to walk through Medicare Advantage, Supplement, and Part D drug plan options so you're fully enrolled with zero coverage gaps.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What if I need to make changes after I'm enrolled?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>You'll always have a direct line to Shannon — not a call center. Life changes (new job, moving, a new baby, etc.) can affect your coverage, and we're here to help you navigate any updates or annual renewals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact-bg" id="contact">
   <div class="section-inner">
     <div class="section-label">Get In Touch</div>
@@ -974,7 +1508,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div class="footer-logo">Your Healthcare <span>Solutions</span></div>
+    <div class="footer-logo"><img src="logo-nav.png" alt="Your Healthcare Solutions" class="footer-logo-img" /></div>
     <div class="footer-links">
       <a href="#services">Services</a>
       <a href="#how">How It Works</a>
@@ -990,27 +1524,140 @@
 </footer>
 
 <script>
-  // Mobile menu toggle
+  // ── MOBILE MENU ──
   document.querySelector('.hamburger').addEventListener('click', function() {
     const links = document.querySelector('.nav-links');
     if (links.style.display === 'flex') {
       links.style.display = 'none';
     } else {
-      links.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:rgba(13,35,64,0.98); padding:1.5rem 5%; gap:1.25rem; border-bottom:1px solid rgba(201,168,76,0.2);';
+      links.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:rgba(14,110,110,0.98); padding:1.5rem 5%; gap:1.25rem; border-bottom:1px solid rgba(45,212,200,0.2);';
     }
   });
 
-  // Smooth scroll offset for fixed nav
+  // ── SMOOTH SCROLL ──
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        const offset = 80;
-        window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
       }
     });
   });
+
+  // ── ANIMATED STAT COUNTERS ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(update);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.target.dataset.count && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = true;
+        animateCounter(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num[data-count]').forEach(el => counterObserver.observe(el));
+
+  // ── FLIP CARDS ──
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+
+  // ── FAQ ACCORDION ──
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── SCROLL-ANIMATED TIMELINE ──
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        stepObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.step-card').forEach(card => stepObserver.observe(card));
+
+  // ── SAVINGS CALCULATOR ──
+  const slider = document.getElementById('premiumSlider');
+  if (slider) {
+    function updateCalc() {
+      const val = parseInt(slider.value);
+      document.getElementById('currentPremium').textContent = '$' + val.toLocaleString();
+      const low = Math.round(val * 0.12);
+      const high = Math.round(val * 0.30);
+      const yearly = Math.round((low + high) / 2 * 12);
+      document.getElementById('savingsLow').textContent = '$' + low.toLocaleString();
+      document.getElementById('savingsHigh').textContent = '$' + high.toLocaleString();
+      document.getElementById('savingsYear').textContent = '$' + yearly.toLocaleString();
+    }
+    slider.addEventListener('input', updateCalc);
+    updateCalc();
+  }
+
+  // ── CONFETTI ON FORM SUBMIT ──
+  function launchConfetti() {
+    const colors = ['#2dd4c8', '#0e6e6e', '#7eebe2', '#14918f', '#ffffff'];
+    for (let i = 0; i < 80; i++) {
+      const piece = document.createElement('div');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + 'vw';
+      piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+      piece.style.width = (Math.random() * 8 + 6) + 'px';
+      piece.style.height = (Math.random() * 8 + 6) + 'px';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      piece.style.animationDelay = (Math.random() * 1) + 's';
+      document.body.appendChild(piece);
+      setTimeout(() => piece.remove(), 4000);
+    }
+  }
+
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      setTimeout(launchConfetti, 500);
+    });
+  });
+
+  // ── PARALLAX HERO CARD ──
+  const heroCard = document.querySelector('.hero-card');
+  if (heroCard) {
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      heroCard.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg) translateZ(10px)`;
+    });
+    document.querySelector('.hero').addEventListener('mouseleave', () => {
+      heroCard.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) translateZ(0)';
+      heroCard.style.transition = 'transform 0.5s ease';
+    });
+  }
 </script>
 </body>
 </html>
