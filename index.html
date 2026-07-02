@@ -777,6 +777,104 @@
     .trust-inner { justify-content: center; }
     .services-header { flex-direction: column; align-items: flex-start; }
   }
+  /* ── TESTIMONIALS ── */
+  .testimonials-bg { background: var(--cream); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2rem;
+    border: 1px solid rgba(14,110,110,0.08);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(14,110,110,0.06);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(14,110,110,0.12);
+  }
+  .testimonial-cta-card {
+    background: var(--navy);
+    border: none;
+    align-items: flex-start;
+  }
+  .testimonial-cta-card .testimonial-stars { color: var(--gold); }
+  .testimonial-cta-card .testimonial-text { color: rgba(255,255,255,0.8); }
+  .testimonial-stars {
+    color: #f59e0b;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text);
+    flex: 1;
+    margin-bottom: 1.5rem;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+  .testimonial-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--navy);
+  }
+  .testimonial-meta {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+  }
+  .testimonial-google-link {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .testimonial-google-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .testimonial-google-link a:hover { color: var(--navy); }
+  .google-g {
+    width: 28px; height: 28px;
+    background: white;
+    border: 1px solid rgba(14,110,110,0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #4285f4;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
   /* ── FAQ ── */
   .faq-bg { background: var(--white); }
   .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
@@ -1336,6 +1434,102 @@
           <a href="https://www.instagram.com/dogs_n_healthcare/" class="social-link" target="_blank">📷 Instagram</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-label">What Clients Say</div>
+    <h2 class="section-title">Real People. <em>Real Results.</em></h2>
+    <p class="section-desc" style="margin-bottom: 3rem;">Don't just take our word for it — here's what Shannon's clients have to say.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"If you want a health insurance professional that TRULY cares about you, your health and wellbeing, then Shannon is your gal! I have used her multiple times — she helped my entire family get set-up on a policy that works best for what we need and she answered all of our questions along the way."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          <div>
+            <div class="testimonial-name">MacKenzie Brown</div>
+            <div class="testimonial-meta">Verified Google Review · 2 months ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Shannon was exceptional to work with! She took the time to find a health insurance policy that truly fit our son's needs and carefully walked us through every detail to ensure he had the right personalized coverage at an affordable cost while still allowing him to choose his providers. She made what could have been a stressful experience simple and easy to navigate."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">H</div>
+          <div>
+            <div class="testimonial-name">Holly Dillon</div>
+            <div class="testimonial-meta">Verified Google Review · 1 day ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"When my family needed more information about how we could save as a family, Shannon provided multiple options. You definitely made this easier than our other insurance provider. Thank you Shannon."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">D</div>
+          <div>
+            <div class="testimonial-name">Daniel Patton</div>
+            <div class="testimonial-meta">Verified Google Review · Local Guide</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Shannon has always taken care of us. She is very prompt in returning our calls and finding the best insurance for us. I recommend her to everyone."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          <div>
+            <div class="testimonial-name">Rockie Internet</div>
+            <div class="testimonial-meta">Verified Google Review · Responsiveness, Quality, Professionalism, Value</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We needed help understanding our dental benefits. We called Shannon and she explained everything so we could understand our policy. A few hours later we had to text Shannon from the pharmacy — she knew the answer and texted us immediately. Excellent knowledge and perfect service."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">J</div>
+          <div>
+            <div class="testimonial-name">Jan Smith</div>
+            <div class="testimonial-meta">Verified Google Review · 3 years ago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Epitome of kind and caring professional. Highly recommend!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">A</div>
+          <div>
+            <div class="testimonial-name">Ashley Keen</div>
+            <div class="testimonial-meta">Verified Google Review · Local Guide</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card testimonial-cta-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text" style="font-style: italic; opacity: 0.75;">Had a great experience with Shannon? We'd love to hear about it — your review helps other families in Sarasota find the right coverage.</p>
+        <a href="https://share.google/y5CPFnAaFmgEQ62SJ" target="_blank" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Leave a Google Review ★</a>
+      </div>
+    </div>
+
+    <div class="testimonial-google-link">
+      <a href="https://share.google/y5CPFnAaFmgEQ62SJ" target="_blank">
+        <span class="google-g">G</span>
+        View all reviews on Google
+      </a>
     </div>
   </div>
 </section>
