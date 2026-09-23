@@ -1089,7 +1089,12 @@
           <option>Life Insurance</option>
           <option>Supplemental Coverage</option>
         </select>
+        <input type="hidden" name="sms_consent_text" value="By providing your phone number, you consent to receive appointment confirmations, reminders, and support messages by text from Your Healthcare Solutions. Message and data rates may apply. Message frequency varies. Reply STOP to opt out or HELP for help." />
+        <input type="hidden" name="sms_consent_timestamp" value="" />
         <button type="submit" class="btn-primary">Request My Complimentary Consultation →</button>
+        <p style="font-size: 0.68rem; line-height: 1.55; color: rgba(255,255,255,0.45); text-align: center; margin: 0.25rem 0 0; padding-top: 0.9rem; border-top: 1px solid rgba(255,255,255,0.12);">
+          By providing your phone number, you consent to receive appointment confirmations, reminders, and support messages by text from Your Healthcare Solutions. Message and data rates may apply. Message frequency varies. Reply STOP to opt out or HELP for help.
+        </p>
       </form>
     </div>
   </div>
@@ -1687,6 +1692,8 @@
             <label>Message (Optional)</label>
             <textarea name="message" rows="3" placeholder="Tell us about your current situation, doctors you want to keep, or any questions you have..."></textarea>
           </div>
+          <input type="hidden" name="sms_consent_text" value="By providing your phone number, you consent to receive appointment confirmations, reminders, and support messages by text from Your Healthcare Solutions. Message and data rates may apply. Message frequency varies. Reply STOP to opt out or HELP for help." />
+          <input type="hidden" name="sms_consent_timestamp" value="" />
           <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;">
             Request My Complimentary Consultation →
           </button>
@@ -1712,6 +1719,7 @@
       <a href="#about">About Shannon</a>
       <a href="https://calendar.app.google/vZpXj1YBBC85GrbX6">Contact</a>
       <a href="https://share.google/y5CPFnAaFmgEQ62SJ" target="_blank">Leave a Review</a>
+      <a href="privacy.html">Privacy Policy</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1739,6 +1747,15 @@
         e.preventDefault();
         window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
       }
+    });
+  });
+
+  // ── SMS CONSENT TIMESTAMP ──
+  // Stamps the moment of submission so opt-in can be evidenced per number
+  // if a carrier requests proof during 10DLC vetting.
+  document.querySelectorAll('input[name="sms_consent_timestamp"]').forEach(field => {
+    field.form.addEventListener('submit', function() {
+      field.value = new Date().toISOString();
     });
   });
 
