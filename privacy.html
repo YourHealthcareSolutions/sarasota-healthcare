@@ -10,10 +10,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --navy: #0e6e6e;
-    --navy-mid: #14918f;
-    --gold: #2dd4c8;
-    --gold-light: #7eebe2;
+    /* Palette is teal / black / white only. Shared with index.html. */
+    --teal-deep: #0e6e6e;
+    --teal-mid: #14918f;
+    --teal-bright: #2dd4c8;
+    --teal-pale: #7eebe2;
     --cream: #f4fbfa;
     --white: #ffffff;
     --text: #1a2e2e;
@@ -70,17 +71,17 @@
     text-transform: uppercase;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover { color: var(--teal-bright); }
   .nav-cta {
-    background: var(--gold) !important;
-    color: var(--navy) !important;
+    background: var(--teal-bright) !important;
+    color: var(--teal-deep) !important;
     padding: 0.5rem 1.4rem;
     border-radius: 2px;
     font-weight: 500 !important;
     letter-spacing: 0.05em !important;
     transition: background 0.2s !important;
   }
-  .nav-cta:hover { background: var(--gold-light) !important; }
+  .nav-cta:hover { background: var(--teal-pale) !important; }
 
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
   .hamburger span { width: 24px; height: 1.5px; background: white; display: block; }
@@ -110,7 +111,7 @@
   }
   .policy h2 {
     font-size: 1.5rem;
-    color: var(--navy);
+    color: var(--teal-deep);
     margin: 2.75rem 0 0.9rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--border);
@@ -118,7 +119,7 @@
   .policy h2:first-of-type { margin-top: 0; }
   .policy h3 {
     font-size: 1.15rem;
-    color: var(--navy-mid);
+    color: var(--teal-mid);
     margin: 1.75rem 0 0.6rem;
   }
   .policy p {
@@ -134,13 +135,13 @@
     color: var(--text-mid);
     margin-bottom: 0.4rem;
   }
-  .policy a { color: var(--navy-mid); text-decoration: underline; text-underline-offset: 2px; }
-  .policy a:hover { color: var(--gold); }
+  .policy a { color: var(--teal-mid); text-decoration: underline; text-underline-offset: 2px; }
+  .policy a:hover { color: var(--teal-bright); }
   .policy strong { font-weight: 500; color: var(--text); }
 
   .highlight {
     background: var(--white);
-    border-left: 3px solid var(--gold);
+    border-left: 3px solid var(--teal-bright);
     padding: 1.25rem 1.5rem;
     border-radius: 0 2px 2px 0;
     margin: 1.5rem 0;
@@ -157,7 +158,7 @@
 
   /* ── FOOTER ── */
   footer {
-    background: var(--navy);
+    background: var(--teal-deep);
     padding: 3rem 5% 2rem;
     border-top: 1px solid rgba(45,212,200,0.15);
   }
@@ -178,7 +179,7 @@
     letter-spacing: 0.05em;
     transition: color 0.2s;
   }
-  .footer-links a:hover { color: var(--gold); }
+  .footer-links a:hover { color: var(--teal-bright); }
   .footer-bottom {
     max-width: 1200px; margin: 0 auto;
     display: flex; justify-content: space-between; align-items: center;
