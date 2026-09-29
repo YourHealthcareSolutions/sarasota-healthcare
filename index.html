@@ -1089,6 +1089,7 @@
           <option>Life Insurance</option>
           <option>Supplemental Coverage</option>
         </select>
+        <input type="hidden" name="phone_digits" value="" />
         <input type="hidden" name="sms_consent_text" value="" />
         <input type="hidden" name="sms_consent_timestamp" value="" />
         <button type="submit" class="btn-primary">Request My Complimentary Consultation →</button>
@@ -1698,6 +1699,7 @@
             <label>Message (Optional)</label>
             <textarea name="message" rows="3" placeholder="Tell us about your current situation, doctors you want to keep, or any questions you have..."></textarea>
           </div>
+          <input type="hidden" name="phone_digits" value="" />
           <input type="hidden" name="sms_consent_text" value="" />
           <input type="hidden" name="sms_consent_timestamp" value="" />
           <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem;">
@@ -1759,6 +1761,23 @@
         e.preventDefault();
         window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
       }
+    });
+  });
+
+  // ── PHONE NORMALISATION ──
+  // The visible field stays free-form on purpose - people type (941) 555-0182,
+  // 941.555.0182 or 9415550182 and all of them are fine. A hidden digits-only
+  // copy travels with the submission so nothing downstream has to guess at the
+  // format. A leading US 1 is dropped so both sides always agree on ten digits.
+  document.querySelectorAll('form').forEach(form => {
+    const phone = form.querySelector('input[name="phone"]');
+    const digits = form.querySelector('input[name="phone_digits"]');
+    if (!phone || !digits) return;
+
+    form.addEventListener('submit', function() {
+      let d = String(phone.value || '').replace(/\D/g, '');
+      if (d.length === 11 && d.charAt(0) === '1') d = d.slice(1);
+      digits.value = d;
     });
   });
 
